@@ -20,6 +20,8 @@ import br.edu.ifpb.dac.alysense.alysense.business.service.AvaliationService;
 import br.edu.ifpb.dac.alysense.alysense.business.service.ConverterService;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Avaliation;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.EvalueteItem;
+import br.edu.ifpb.dac.alysense.alysense.model.entity.User;
+import br.edu.ifpb.dac.alysense.alysense.model.entity.Avaliation.answerAvaliation;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.AvaliationDTO;
 
 
@@ -36,11 +38,11 @@ public class AvaliationController {
 	public ResponseEntity save(@RequestBody AvaliationDTO dto) {
 
 		try {
-				Avaliation avaliation = converterService.DTOToAvaliation(dto);
-				avaliation = avaliationService.save(avaliation);
-				dto = converterService.AvaliationToDTO(avaliation);
+			Avaliation entity = converterService.DTOToAvaliation(dto);
+			avaliationService.save(entity);
+			dto = converterService.AvaliationToDTO(entity);
 			return new ResponseEntity(dto, HttpStatus.CREATED);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
@@ -71,14 +73,16 @@ public class AvaliationController {
 	
 	@GetMapping
 	public ResponseEntity find( @RequestParam(value = "id", required = false) Long id,
-			@RequestParam(value = "aspect", required = false) String answer,
-			@RequestParam(value = "titleEvent", required = false) String titleEvent ,
+			@RequestParam(value = "aspect", required = false) answerAvaliation answer,
+			@RequestParam(value = "titleEvent", required = false) String titleEvent,
+			@RequestParam(value = "evaluator", required = false) User evaluator,
 			@RequestParam(value = "evaluateItems", required = false) List<EvalueteItem> evalueteItems) {
 		try {
 			Avaliation filter = new Avaliation();
 			filter.setId(id);
             filter.setAnswer(answer);
 			filter.setTitleEvent(titleEvent);
+			filter.setEvaluator(evaluator);
             filter.setEvalueteItems(evalueteItems);
 			
 			

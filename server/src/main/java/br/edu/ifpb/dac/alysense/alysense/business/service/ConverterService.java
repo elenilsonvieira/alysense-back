@@ -2,6 +2,8 @@ package br.edu.ifpb.dac.alysense.alysense.business.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Avaliation;
@@ -9,6 +11,8 @@ import br.edu.ifpb.dac.alysense.alysense.model.entity.EvalueteItem;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.EventSense;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Product;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.User;
+import br.edu.ifpb.dac.alysense.alysense.model.repository.AvaliationRepository;
+import br.edu.ifpb.dac.alysense.alysense.model.repository.UserRepository;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.AvaliationDTO;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.EvalueteItemDTO;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.EventDTO;
@@ -18,11 +22,15 @@ import br.edu.ifpb.dac.alysense.alysense.presentation.dto.UserDTO;
 @Service
 public class ConverterService {
 
+	@Autowired
+	 private UserRepository userRepository;
+
 		/*-------------------------- Avaliation to DTO -------------------------*/
 		public AvaliationDTO AvaliationToDTO(Avaliation entity){
 			AvaliationDTO dto = new AvaliationDTO();
 			dto.setId(entity.getId());
 			dto.setAnswer(entity.getAnswer());
+			dto.setEvaluator(entity.getEvaluator().getId());
 			dto.setTitleEvent(entity.getTitleEvent());
 			dto.setEvalueteItems(entity.getEvalueteItems());
 			return dto;
@@ -47,6 +55,7 @@ public class ConverterService {
 			Avaliation entity = new Avaliation();
 			entity.setId(dto.getId());
 			entity.setAnswer(dto.getAnswer());
+			entity.setEvaluator(userRepository.getById(dto.getEvaluator()));
 			entity.setTitleEvent(dto.getTitleEvent());
 			entity.setEvalueteItems(dto.getEvalueteItems());
 			return entity;
@@ -70,7 +79,6 @@ public class ConverterService {
 	public EvalueteItemDTO EvalueteItemToDTO(EvalueteItem entity){
 		EvalueteItemDTO dto = new EvalueteItemDTO();
 		dto.setId(entity.getId());
-		dto.setEvaluator(entity.getEvaluator());
 		dto.setSample(entity.getSample());
 		dto.setNote(entity.getNote());
 		dto.setQuestion(entity.getQuestion());
@@ -95,7 +103,6 @@ public class ConverterService {
 	public EvalueteItem DTOToEvaluateItem(EvalueteItemDTO dto) {
 		EvalueteItem entity = new EvalueteItem();
 		entity.setId(dto.getId());
-		entity.setEvaluator(dto.getEvaluator());
 		entity.setSample(dto.getSample());
 		entity.setNote(dto.getNote());
 		entity.setQuestion(dto.getQuestion());
