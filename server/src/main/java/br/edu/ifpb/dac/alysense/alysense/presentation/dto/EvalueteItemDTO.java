@@ -1,5 +1,7 @@
 package br.edu.ifpb.dac.alysense.alysense.presentation.dto;
 
+import java.util.List;
+
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Note;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Sample;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.User;
@@ -12,7 +14,7 @@ public class EvalueteItemDTO {
     private Long id;
 
     private User evaluator;
-    private Sample sample;
+    private List<Sample> samples;
     private Note note;
-    private String question;
+    private String answer;
 }

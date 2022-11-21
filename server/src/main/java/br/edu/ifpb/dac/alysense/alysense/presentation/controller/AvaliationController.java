@@ -1,9 +1,6 @@
 package br.edu.ifpb.dac.alysense.alysense.presentation.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +17,7 @@ import br.edu.ifpb.dac.alysense.alysense.business.service.AvaliationService;
 import br.edu.ifpb.dac.alysense.alysense.business.service.ConverterService;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Avaliation;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.EvalueteItem;
-import br.edu.ifpb.dac.alysense.alysense.model.entity.User;
-import br.edu.ifpb.dac.alysense.alysense.model.entity.Avaliation.answerAvaliation;
+import br.edu.ifpb.dac.alysense.alysense.model.entity.Product;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.AvaliationDTO;
 
 
@@ -73,16 +69,14 @@ public class AvaliationController {
 	
 	@GetMapping
 	public ResponseEntity find( @RequestParam(value = "id", required = false) Long id,
-			@RequestParam(value = "aspect", required = false) answerAvaliation answer,
-			@RequestParam(value = "titleEvent", required = false) String titleEvent,
-			@RequestParam(value = "evaluator", required = false) User evaluator,
+			@RequestParam(value = "aspect", required = false) String question,
+			@RequestParam(value = "product", required = false) Product product,
 			@RequestParam(value = "evaluateItems", required = false) List<EvalueteItem> evalueteItems) {
 		try {
 			Avaliation filter = new Avaliation();
 			filter.setId(id);
-            filter.setAnswer(answer);
-			filter.setTitleEvent(titleEvent);
-			filter.setEvaluator(evaluator);
+            filter.setQuestion(question);
+			filter.setProduct(product);
             filter.setEvalueteItems(evalueteItems);
 			
 			

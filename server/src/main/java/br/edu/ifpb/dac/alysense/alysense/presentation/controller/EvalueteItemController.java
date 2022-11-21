@@ -75,15 +75,15 @@ public class EvalueteItemController {
 	
 	@GetMapping
 	public ResponseEntity find( @RequestParam(value = "id", required = false) Long id,
-			@RequestParam(value = "sample", required = false) Sample sample,
+			@RequestParam(value = "sample", required = false) List<Sample> samples,
 			@RequestParam(value = "note", required = false) Note note,
 			@RequestParam(value = "question", required = false) String question) {
 		try {
 			EvalueteItem filter = new EvalueteItem();
 			filter.setId(id);
-			filter.setSample(sample);
+			filter.setSamples(samples);
 			filter.setNote(note);
-			filter.setQuestion(question);
+			filter.setAnswer(question);
 			
 			
 			List<EvalueteItem> entities = evaluateItemService.find(filter);
