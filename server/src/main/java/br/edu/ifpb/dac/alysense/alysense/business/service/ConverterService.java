@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Avaliation;
+import br.edu.ifpb.dac.alysense.alysense.model.entity.Characteristic;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.EvalueteItem;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.EventSense;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Product;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.User;
 import br.edu.ifpb.dac.alysense.alysense.model.repository.UserRepository;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.AvaliationDTO;
+import br.edu.ifpb.dac.alysense.alysense.presentation.dto.CharacteristicDTO;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.EvalueteItemDTO;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.EventDTO;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.ProductDTO;
@@ -281,4 +283,49 @@ public class ConverterService {
 
 	
 	/*--------------------------------------------------- Event ---------------------------------------------------*/
+
+	/*--------------------------------------------------- Characteristic ---------------------------------------------------*/
+
+	/*-------------------------- Characteristic to DTO -------------------------*/
+
+	public CharacteristicDTO CharacteristicToDTO(Characteristic entity){
+		CharacteristicDTO dto = new CharacteristicDTO();
+		dto.setId(entity.getId());
+		dto.setAtribute(entity.getAtribute());
+		return dto;
+	}
+
+	public List<CharacteristicDTO> CharacteristicToDTO(List<Characteristic> entities){
+		List<CharacteristicDTO> dtos = new ArrayList<>();
+
+		for (Characteristic entity : entities) {
+			CharacteristicDTO dto = CharacteristicToDTO(entity);
+			dtos.add(dto);
+			System.out.println(dto);
+		}
+		return dtos;
+	}
+
+	/*-------------------------- DTO to Characteristic -------------------------*/
+
+	public Characteristic DTOToCharacteristic(CharacteristicDTO dto) {
+		Characteristic entity = new Characteristic();
+		entity.setId(dto.getId());
+		entity.setAtribute(dto.getAtribute());
+		return entity;
+
+	}
+
+	public List<Characteristic> DTOToCharacteristic(List<CharacteristicDTO> dtos) {
+		List<Characteristic> entities = new ArrayList<>();
+
+		for (CharacteristicDTO dto : dtos) {
+			Characteristic entity = DTOToCharacteristic(dto);
+			entities.add(entity);
+		}
+		return entities;
+	}
+	/*-------------------------- DTO to Characteristic -------------------------*/
+
+
 }
