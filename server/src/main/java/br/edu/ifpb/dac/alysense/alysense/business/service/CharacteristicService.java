@@ -1,4 +1,4 @@
-package br.edu.ifpb.dac.alysense.alysense.business;
+package br.edu.ifpb.dac.alysense.alysense.business.service;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.stereotype.Service;
 
-import br.edu.ifpb.dac.alysense.alysense.business.service.ConverterService;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Characteristic;
 import br.edu.ifpb.dac.alysense.alysense.model.repository.CharacteristicRepository;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.CharacteristicDTO;

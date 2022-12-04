@@ -21,7 +21,6 @@ import br.edu.ifpb.dac.alysense.alysense.business.service.EvalueteItemService;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.EvalueteItem;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Note;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Sample;
-import br.edu.ifpb.dac.alysense.alysense.model.entity.User;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.EvalueteItemDTO;
 
 @RestController

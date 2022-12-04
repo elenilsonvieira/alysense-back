@@ -14,13 +14,12 @@ import lombok.Setter;
 public class ProductDTO {
     
     private Long id;
-
 	private String name;
     private LocalDate expirationDate;
     private String owner;
     private String ingredients;
-    private Long userId;
+    private String userId;
     private List<Characteristic> characteristics;
     private List<Sample> samples;
-    private Avaliation avaliation;
+    private List<Avaliation> avaliations;
 }

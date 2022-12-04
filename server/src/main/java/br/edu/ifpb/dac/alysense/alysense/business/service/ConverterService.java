@@ -23,9 +23,6 @@ import br.edu.ifpb.dac.alysense.alysense.presentation.dto.UserDTO;
 @Service
 public class ConverterService {
 
-	@Autowired
-	 private UserRepository userRepository;
-
 		/*-------------------------- Avaliation to DTO -------------------------*/
 		public AvaliationDTO AvaliationToDTO(Avaliation entity){
 			AvaliationDTO dto = new AvaliationDTO();
@@ -40,7 +37,7 @@ public class ConverterService {
 	
 		public List<AvaliationDTO> AvaliationToDTO(List<Avaliation> entities){
 			List<AvaliationDTO> dtos = new ArrayList<>();
-	
+
 			for (Avaliation entity : entities) {
 				AvaliationDTO dto = AvaliationToDTO(entity);
 				dtos.add(dto);
@@ -170,9 +167,9 @@ public class ConverterService {
 		dto.setIngredients(entity.getIngredients());
 		dto.setName(entity.getName());
 		dto.setOwner(entity.getOwner());
-		dto.setUserId(entity.getUserId());
+		dto.setUserId((entity.getUserId()));
 		dto.setSamples(entity.getSamples());
-		dto.setAvaliation(entity.getAvaliation());
+		dto.setAvaliations(entity.getAvaliations());
 		return dto;
 		
 	}
@@ -201,7 +198,7 @@ public class ConverterService {
 		entity.setOwner(dto.getOwner());
 		entity.setUserId(dto.getUserId());
 		entity.setSamples(dto.getSamples());
-		entity.setAvaliation(dto.getAvaliation());
+		entity.setAvaliations(dto.getAvaliations());
 
 		return entity;
 
@@ -232,7 +229,8 @@ public class ConverterService {
 		dto.setItems(entity.getItems());
 		dto.setLocal(entity.getLocal());
 		dto.setAdmUser(entity.getAdmUser());
-		dto.setAvaliation(AvaliationToDTO(entity.getAvaliations()));
+		dto.setAvaliation(new ArrayList<AvaliationDTO> ());
+	//	dto.setAvaliation(AvaliationToDTO(entity.getAvaliations()));
 		dto.setNumberSample(entity.getNumberSample());
 		dto.setMinimunAge(entity.getMinimunAge());
 		return dto;
@@ -263,8 +261,9 @@ public class ConverterService {
 		entity.setItems(dto.getItems());
 		entity.setLocal(dto.getLocal());
 		entity.setAdmUser(dto.getAdmUser());
-		entity.setNumberSample(dto.getNumberSample());
-		entity.setAvaliations(DTOToAvaliation(dto.getAvaliation()));
+		entity.setNumberSample(dto.getNumberSample()); 
+		entity.setAvaliations(new ArrayList<Avaliation> ());
+		//entity.setAvaliations(DTOToAvaliation(dto.getAvaliation()));
 		entity.setMinimunAge(dto.getMinimunAge());
 		return entity;
 

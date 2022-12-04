@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ifpb.dac.alysense.alysense.business.CharacteristicService;
+import br.edu.ifpb.dac.alysense.alysense.business.service.CharacteristicService;
 import br.edu.ifpb.dac.alysense.alysense.business.service.ConverterService;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Characteristic;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.CharacteristicDTO;

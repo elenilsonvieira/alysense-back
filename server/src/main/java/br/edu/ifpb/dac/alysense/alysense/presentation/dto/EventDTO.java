@@ -17,7 +17,7 @@ public class EventDTO {
     private Integer peopleLimit;
     private Integer numberSample;
     private List<Product> items;
-    private Long admUser;
+    private String admUser;
     private Integer minimunAge;
     private List<AvaliationDTO> avaliation;
   

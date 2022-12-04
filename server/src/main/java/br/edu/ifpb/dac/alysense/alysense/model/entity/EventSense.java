@@ -41,6 +41,6 @@ public class EventSense {
     @OneToMany(cascade = CascadeType.MERGE)
     private List<Product> items;
 
-    private Long admUser;
+    private String admUser;
 
 }

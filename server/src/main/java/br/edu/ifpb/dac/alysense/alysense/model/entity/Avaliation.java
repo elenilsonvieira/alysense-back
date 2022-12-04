@@ -32,6 +32,6 @@ public class Avaliation{
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = false)
     private List<EvalueteItem> evalueteItems;
     
-    @OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Product product;
 }
