@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +35,8 @@ public class EventSense {
     private Integer peopleLimit;
     private Integer numberSample;
     private Integer minimunAge; 
-
+    private String typeScale;
+    
     @OneToMany
     @JoinColumn(name = "avaliation_id")
     private List<Avaliation> avaliations;

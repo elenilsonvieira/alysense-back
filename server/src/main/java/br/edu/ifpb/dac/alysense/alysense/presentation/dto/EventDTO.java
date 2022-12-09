@@ -20,7 +20,8 @@ public class EventDTO {
     private String admUser;
     private Integer minimunAge;
     private List<AvaliationDTO> avaliation;
-  
+    private String typeScale;
+    
     
     
 }

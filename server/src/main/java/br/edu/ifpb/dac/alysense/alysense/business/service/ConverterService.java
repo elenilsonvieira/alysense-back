@@ -3,6 +3,7 @@ package br.edu.ifpb.dac.alysense.alysense.business.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bouncycastle.pqc.math.linearalgebra.IntegerFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -230,6 +231,7 @@ public class ConverterService {
 		dto.setLocal(entity.getLocal());
 		dto.setAdmUser(entity.getAdmUser());
 		dto.setAvaliation(new ArrayList<AvaliationDTO> ());
+		dto.setTypeScale(entity.getTypeScale());
 	//	dto.setAvaliation(AvaliationToDTO(entity.getAvaliations()));
 		dto.setNumberSample(entity.getNumberSample());
 		dto.setMinimunAge(entity.getMinimunAge());
@@ -261,8 +263,9 @@ public class ConverterService {
 		entity.setItems(dto.getItems());
 		entity.setLocal(dto.getLocal());
 		entity.setAdmUser(dto.getAdmUser());
-		entity.setNumberSample(dto.getNumberSample()); 
+		entity.setNumberSample(dto.getNumberSample());
 		entity.setAvaliations(new ArrayList<Avaliation> ());
+		entity.setTypeScale(dto.getTypeScale());
 		//entity.setAvaliations(DTOToAvaliation(dto.getAvaliation()));
 		entity.setMinimunAge(dto.getMinimunAge());
 		return entity;
@@ -278,6 +281,10 @@ public class ConverterService {
 		}
 		return entities;
 	}
+
+
+
+	
 	/*-------------------------- DTO to Event -------------------------*/
 
 	
