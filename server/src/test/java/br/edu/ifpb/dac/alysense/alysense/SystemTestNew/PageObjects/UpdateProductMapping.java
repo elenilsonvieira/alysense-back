@@ -1,4 +1,4 @@
-package br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects;
+package br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects;
+package br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects;
 
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 public class CreateEventMapping {
     private WebDriver driver;
 
-    @FindBy(how = How.CSS, using = "div.App div.nav-bar nav.navbar.navbar-expand-lg.navbar-dark.bg-primary div.container-fluid div.collapse.navbar-collapse ul.navbar-nav.me-auto li.nav-item:nth-child(3) > a.nav-link")
+    @FindBy(how = How.CSS, using = "div.App div.nav-bar nav.navbar.navbar-expand-lg.navbar-dark.bg-primary div.container-fluid div.collapse.navbar-collapse ul.navbar-nav.me-auto li.nav-item:nth-child(2) > a.nav-link")
     private WebElement navBarCreateEvent;
     
     @FindBy(how = How.CSS, using = "div.App div.event-create header.EventCreate-header div.main-container div.big-form > h1.title:nth-child(1)")
@@ -29,10 +29,16 @@ public class CreateEventMapping {
     @FindBy(how = How.CSS, using = "#inputParticipants")
     private WebElement inputPaticipants;
 
-    @FindBy(how = How.CSS, using = "#inputSamples")
+    @FindBy(how = How.CSS, using = "#inputSamples")  
     private WebElement inputSamples;
 
-    @FindBy(how = How.CSS, using = "div.App div.event-create header.EventCreate-header div.main-container div.big-form form:nth-child(2) div.action-button:nth-child(5) > button.btn.btn-primary")
+    @FindBy(how = How.CSS, using = "#minimunAge")  
+    private WebElement inputMinimunAge;
+
+    @FindBy(how = How.XPATH, using = "(//*[@id='HEDONIC_FACIAL'])") 
+    private WebElement inputTypeScale;
+
+    @FindBy(how = How.CSS, using = ".btn-primary:nth-child(1)")
     private WebElement btnCreateEvent;
 
     public CreateEventMapping(WebDriver driver){
@@ -41,7 +47,8 @@ public class CreateEventMapping {
     }
 
     public void clickNavBarCreateEvent(){
-        this.navBarCreateEvent.click();
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].click()", this.navBarCreateEvent);
     }
 
     public String textTitle(){
@@ -68,6 +75,15 @@ public class CreateEventMapping {
     public void inputSamples(String qtdSamples){
         this.inputSamples.clear();
         this.inputSamples.sendKeys(qtdSamples);
+    }
+
+    public void inputAge(String minimunAge){
+        this.inputMinimunAge.clear();
+        this.inputMinimunAge.sendKeys(minimunAge);
+    }
+
+    public void inputTypeScale(){
+        this.inputTypeScale.click();
     }
 
     public void clickCreateEvent(){

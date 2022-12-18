@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,13 +37,15 @@ public class EventSense {
     private Integer peopleLimit;
     private Integer numberSample;
     private Integer minimunAge; 
-    private String typeScale;
+
+    @Enumerated(EnumType.STRING)
+    private TypeScale typeScale;
     
     @OneToMany
     @JoinColumn(name = "avaliation_id")
     private List<Avaliation> avaliations;
 
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = false)
     private List<Product> items;
 
     private String admUser;

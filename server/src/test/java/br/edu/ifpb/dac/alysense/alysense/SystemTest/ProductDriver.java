@@ -13,10 +13,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects.LoginMapping;
-import br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects.PoductMapping;
-import br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects.ProductViewMapping;
-import br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects.UpdateProductMapping;
+import br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects.LoginMapping;
+import br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects.PoductMapping;
+import br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects.ProductViewMapping;
+import br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects.UpdateProductMapping;
 
 public class ProductDriver {
     static WebDriver driver;

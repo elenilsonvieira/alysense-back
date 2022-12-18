@@ -6,12 +6,14 @@ import java.util.List;
 import org.bouncycastle.pqc.math.linearalgebra.IntegerFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.TypeDescription;
 
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Avaliation;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Characteristic;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.EvalueteItem;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.EventSense;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.Product;
+import br.edu.ifpb.dac.alysense.alysense.model.entity.TypeScale;
 import br.edu.ifpb.dac.alysense.alysense.model.entity.User;
 import br.edu.ifpb.dac.alysense.alysense.model.repository.UserRepository;
 import br.edu.ifpb.dac.alysense.alysense.presentation.dto.AvaliationDTO;
@@ -231,7 +233,7 @@ public class ConverterService {
 		dto.setLocal(entity.getLocal());
 		dto.setAdmUser(entity.getAdmUser());
 		dto.setAvaliation(new ArrayList<AvaliationDTO> ());
-		dto.setTypeScale(entity.getTypeScale());
+		dto.setTypeScale(entity.getTypeScale().toString());
 	//	dto.setAvaliation(AvaliationToDTO(entity.getAvaliations()));
 		dto.setNumberSample(entity.getNumberSample());
 		dto.setMinimunAge(entity.getMinimunAge());
@@ -265,7 +267,7 @@ public class ConverterService {
 		entity.setAdmUser(dto.getAdmUser());
 		entity.setNumberSample(dto.getNumberSample());
 		entity.setAvaliations(new ArrayList<Avaliation> ());
-		entity.setTypeScale(dto.getTypeScale());
+		entity.setTypeScale(converterToTypeScale(dto.getTypeScale()));
 		//entity.setAvaliations(DTOToAvaliation(dto.getAvaliation()));
 		entity.setMinimunAge(dto.getMinimunAge());
 		return entity;
@@ -280,6 +282,23 @@ public class ConverterService {
 			entities.add(entity);
 		}
 		return entities;
+	}
+
+	public TypeScale converterToTypeScale(String scale) {
+		TypeScale typeScale = TypeScale.HEDONIC;
+		switch (scale) {
+			case "HEDONIC":
+				typeScale = TypeScale.HEDONIC;
+				break;
+			case "HEDONIC_FACIAL":
+				typeScale = TypeScale.HEDONIC_FACIAL;
+				break;
+			case "HEDONIC_NUMERAL":
+				typeScale = TypeScale.HEDONIC_NUMERAL;
+				break;
+
+		}
+		return typeScale;
 	}
 
 

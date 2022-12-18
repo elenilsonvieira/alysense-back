@@ -1,4 +1,4 @@
-package br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects;
+package br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

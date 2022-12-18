@@ -11,9 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects.FeedEventMapping;
-import br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects.LoginMapping;
-import br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects.RegisterMapping;
+
+import br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects.FeedEventMapping;
+import br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects.LoginMapping;
+import br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects.RegisterMapping;
 
 public class UserDriver {
 

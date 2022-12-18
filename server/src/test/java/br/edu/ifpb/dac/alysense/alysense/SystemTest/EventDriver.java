@@ -8,15 +8,15 @@ import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects.CreateEventMapping;
-import br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects.FeedEventMapping;
-import br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects.LoginMapping;
-import br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects.RegisterMapping;
-import br.edu.ifpb.dac.alysense.alysense.SystemTest.PageObjects.UpdateEventMapping;
+import br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects.CreateEventMapping;
+import br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects.FeedEventMapping;
+import br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects.LoginMapping;
+import br.edu.ifpb.dac.alysense.alysense.SystemTestNew.PageObjects.UpdateEventMapping;
 
 public class EventDriver {
     
@@ -24,7 +24,7 @@ public class EventDriver {
 	
 	@BeforeAll
 	static void setUp() {
-		System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
 		driver = new ChromeDriver();
 		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
@@ -39,17 +39,19 @@ public class EventDriver {
 
 		//login
 		LoginMapping login = new LoginMapping(driver);
-		login.selectNameInput("filipe");
+		login.selectNameInput("guilherme@gmail.com");
 		timeSleep();
-		login.selectPasswordInput("123");
+		login.selectPasswordInput("12345678");
 		timeSleep();
 		login.clickBtn();
+		timeSleep();
 
 		//inicio Do createEvent
 		CreateEventMapping createEventMapping = new CreateEventMapping(driver);
 
 		createEventMapping.clickNavBarCreateEvent();
 		timeSleep();
+		
 
 		assertEquals("CRIAR NOVO EVENTO", createEventMapping.textTitle());
 
@@ -71,7 +73,14 @@ public class EventDriver {
 		createEventMapping.inputSamples("10");
 		timeSleep();
 
-		createEventMapping.clickCreateEvent();
+		createEventMapping.inputAge("18");
+		timeSleep();
+
+		createEventMapping.inputTypeScale();
+		timeSleep();
+
+		//createEventMapping.clickCreateEvent();
+		driver.findElement(By.cssSelector(".btn-primary:nth-child(1)")).click();
 		timeSleep();
 		//Fim do createEvent
 
